@@ -1,12 +1,20 @@
 import React from 'react'
-
+import Item from '../components/Item'
 
 export default class ItemsContainer extends React.Component {
+
+    mapAllItems = () => {
+        return this.props.items.map((item) => {
+            return <Item item={item} />
+        })
+    }
+    
     render () {
         return (
             <div>
-                HEYO ITEMSCONTAINER
+                {this.mapAllItems()}
             </div>
         )
     }
+
 }
