@@ -10,7 +10,8 @@ export default class StoreMainContainer extends React.Component {
         loggedIn: false,
         currentUser: {},
         currentCartItems: [],
-        currentCart: {}
+        currentCart: {}, 
+        items: []
     }
 
     componentDidMount () {
@@ -45,17 +46,18 @@ export default class StoreMainContainer extends React.Component {
         .then((response) => {
             // console.log(response)
             this.setState({
-                currentCart: response,
+                currentCart: response.cart,
                 loggedIn: true,
-                currentUser: loggedinuser
-            }, () => { console.log(this.state.currentCart) })
+                currentUser: loggedinuser,
+                items: response.items
+            })
         })
     }
 
     render() {
         return (
             <div>
-                {this.state.loggedIn? <ItemsContainer /> : <Login users={this.state.users} loginUser={this.loginUser} />}
+                {this.state.loggedIn? <ItemsContainer items={this.state.items} /> : <Login users={this.state.users} loginUser={this.loginUser} />}
             </div>
         )
     }
