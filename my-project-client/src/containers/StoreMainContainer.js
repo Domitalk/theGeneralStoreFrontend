@@ -1,5 +1,6 @@
 import React from 'react'
 import Login from '../components/Login'
+import ItemsContainer from './ItemsContainer'
 
 
 export default class StoreMainContainer extends React.Component {
@@ -11,16 +12,6 @@ export default class StoreMainContainer extends React.Component {
         currentCartItems: []
     }
 
-    componentDidMount () {
-        fetch('http://localhost:4000/login')
-        .then(r => r.json())
-        .then((response) => {
-            // console.log(response)
-            this.setState({
-                users: response
-            })
-        })
-    }
 
     loginUser = (id) => {
         // console.log(id)
@@ -40,7 +31,7 @@ export default class StoreMainContainer extends React.Component {
     render() {
         return (
             <div>
-                {this.state.loggedIn? null : <Login users={this.state.users} loginUser={this.loginUser} />}
+                {this.state.loggedIn? <ItemsContainer /> : <Login users={this.state.users} loginUser={this.loginUser} />}
             </div>
         )
     }
