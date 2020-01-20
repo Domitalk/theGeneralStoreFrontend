@@ -43,7 +43,10 @@ export default class StoreMainContainer extends React.Component {
         })
         .then(r => r.json())
         .then((response) => {
-            console.log(response)
+            // console.log(response)
+            this.setState({
+                currentCartItems: response
+            }, () => { console.log( this.state.currentCartItems )})
         })
     }
 
@@ -72,7 +75,7 @@ export default class StoreMainContainer extends React.Component {
                 loggedIn: true,
                 currentUser: loggedinuser,
                 items: response.items
-            })
+            }, () => { console.log(this.state) })
         })
     }
 
