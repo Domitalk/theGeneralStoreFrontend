@@ -3,7 +3,7 @@ import React from 'react'
 export default class Item extends React.Component {
 
     handleClick = () => {
-        
+        this.props.addItemToCart(this.props.item)
     }
 
     render() {
