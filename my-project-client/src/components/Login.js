@@ -39,7 +39,6 @@ export default class Login extends React.Component {
                    {this.mapAllValues()}
                 </select> 
                 <input type="submit" name="submit" onClick={this.handleSubmit} />
-
             </div> 
         )
     }

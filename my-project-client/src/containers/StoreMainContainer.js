@@ -28,6 +28,25 @@ export default class StoreMainContainer extends React.Component {
         })
     }
 
+
+    addItemToCart = (itemToAdd) => {
+        fetch('http://localhost:4000/cart_items', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                cart: this.state.currentCart,
+                item: itemToAdd
+            })
+        })
+        .then(r => r.json())
+        .then((response) => {
+            console.log(response)
+        })
+    }
+
     loginUser = (id) => {
         // console.log(id)
         // console.log(this.state.users)
@@ -62,7 +81,7 @@ export default class StoreMainContainer extends React.Component {
             <Router> 
                 <div>
                     {this.state.loggedIn? <Navbar/> : <Login users={this.state.users} loginUser={this.loginUser} /> }
-                    <Route exact path="/browse" render={routerProps => <ItemsContainer {...routerProps} items={this.state.items} />} />
+                    <Route exact path="/browse" render={routerProps => <ItemsContainer {...routerProps} items={this.state.items} addItemToCart={this.addItemToCart} />} />
                     <Route exact path="/cart" render={routerProps => <CartContainer {...routerProps} currentCartItems={this.state.currentCartItems} />} />
                     {/* {this.state.loggedIn? <ItemsContainer items={this.state.items} /> : <Login users={this.state.users} loginUser={this.loginUser} />} */}
                 </div>
