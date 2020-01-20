@@ -43,10 +43,35 @@ export default class StoreMainContainer extends React.Component {
         })
         .then(r => r.json())
         .then((response) => {
-            // console.log(response)
+            
+            let tempfalse = false 
+
+
+            let newArr = [...this.state.currentCartItems]
+
+            newArr.forEach((cartitem) => {
+                if (cartitem.id === response.id) {
+                    tempfalse = true 
+                }
+            })
+
+            if (tempfalse) {
+
+                let replaceindex = newArr.map(function(el) {
+                    return el.id
+                }).indexOf(response.id)
+
+                newArr.splice(replaceindex, 1, response)
+
+            } else {
+                newArr = [...newArr, response]
+            }
+
+
+            
             this.setState({
-                currentCartItems: response
-            }, () => { console.log( this.state.currentCartItems )})
+                currentCartItems: newArr
+            }, () => {console.log("after set state", this.state.currentCartItems)})
         })
     }
 
@@ -75,7 +100,7 @@ export default class StoreMainContainer extends React.Component {
                 loggedIn: true,
                 currentUser: loggedinuser,
                 items: response.items
-            }, () => { console.log(this.state) })
+            })
         })
     }
 
