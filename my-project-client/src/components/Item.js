@@ -15,7 +15,7 @@ export default class Item extends Component {
 
                 </div>
                 <div className="extra content">
-                    {this.props.price}  
+                    ${this.props.price}  
                 </div>
             </div>
 

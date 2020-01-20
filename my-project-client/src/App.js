@@ -8,14 +8,14 @@ function App() {
   return (
     <div>
       <header>
-       <div  className="container" >
+       {/* <div  className="container" >
           <div className="row">  
             <div className="col-5">column number one</div>
             <div className="col-5">column number one</div>
             <i class="fas fa-shopping-cart"></i>
           </div>
-       </div>
-        {/* {<StoreMainContainer />} */}
+       </div> */}
+        {<StoreMainContainer />}
       </header>
     </div>
   );

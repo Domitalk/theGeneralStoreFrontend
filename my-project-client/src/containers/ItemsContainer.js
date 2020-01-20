@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import Item from '../components/Item'
+import NavBar from '../components/NavBar'
+import Details from '../components/Item_Detes'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default class ItemsContainer extends Component {
 
@@ -23,8 +26,11 @@ export default class ItemsContainer extends Component {
 
     render() {
         return (
-            <div className="ui link cards">
-                {this.itemCard()}
+            <div>   
+                <NavBar />   
+                <div className="ui link cards">
+                    {this.itemCard()}
+                </div>
             </div>
         )
     }
