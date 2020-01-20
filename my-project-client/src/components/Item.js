@@ -5,7 +5,7 @@ export default class Item extends Component {
         return (
              <div /*onClick={this.handleClick}*/ className="card">
                 <div className="image">
-                    <img src={this.props.image} ></img>
+                    {/* <img src={this.props.image} ></img> */}
                 </div>
                 <div className="content">
                     <a className="header">{this.props.name}</a>

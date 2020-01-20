@@ -9,32 +9,56 @@ export default class StoreMainContainer extends React.Component {
         users: [],
         loggedIn: false,
         currentUser: {},
-        currentCartItems: []
+        currentCartItems: [],
+        currentCart: {},
+        items: []
     }
 
+    componentDidMount() {
+        fetch('http://localhost:4000/login')
+            .then(r => r.json())
+            .then((response) => {
+                // console.log(response)
+                this.setState({
+                    users: response
+                })
+            })
+    }
 
     loginUser = (id) => {
         // console.log(id)
         // console.log(this.state.users)
-        let loggedinuser = this.state.users.find(function(user) {
+        let loggedinuser = this.state.users.find(function (user) {
             return user.id === parseInt(id)
         })
-        console.log("after find", loggedinuser)
-        this.setState({
-            currentUser: loggedinuser,
-            loggedIn: true
+        // console.log("after find", loggedinuser)
+        fetch('http://localhost:4000/carts', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                user: loggedinuser
+            })
         })
+            .then(r => r.json())
+            .then((response) => {
+                // console.log(response)
+                this.setState({
+                    currentCart: response.cart,
+                    loggedIn: true,
+                    currentUser: loggedinuser,
+                    items: response.items
+                })
+            })
     }
-
-
 
     render() {
         return (
             <div>
-                {this.state.loggedIn? <ItemsContainer /> : <Login users={this.state.users} loginUser={this.loginUser} />}
+                {this.state.loggedIn ? <ItemsContainer items={this.state.items} /> : <Login users={this.state.users} loginUser={this.loginUser} />}
             </div>
         )
     }
-
-
 }
