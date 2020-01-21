@@ -16,22 +16,23 @@ export default class Navbar extends React.Component {
     
     render () {
         return (
+
             
                 <nav className="navbar navbar-expand-sm navbar-style navbar-dark px-sm-5">   
                 <h3 className="text-title2">The Generic Store</h3>
                     <ul className="navbar-nav align-items-center">
                     <li className="ml-5">
-                        <NavLink to="/" >
+                        <NavLink exact to="/" >
                             About Us
                         </NavLink>
                     </li>
                     <li className="ml-5">
-                        <NavLink to="/" >
+                        <NavLink exact to="/" >
                             Testimonials
                         </NavLink>
                     </li>
                     <li className="ml-5">
-                        <NavLink to="/" >
+                        <NavLink exact to="/" >
                             Charity Involvement
                         </NavLink>
                     </li>
@@ -41,7 +42,7 @@ export default class Navbar extends React.Component {
                         </NavLink>
                     </li>
                     </ul>
-                     <NavLink to='/cart' className="ml-auto">
+                     <NavLink exact to='/cart' className="ml-auto">
                      <button className="checkout-button">
                         <span className="mr-2">
                             <i className="fas fa-cart-plus" />
@@ -68,6 +69,7 @@ export default class Navbar extends React.Component {
             //             background: 'darkblue'
             //         }}
             //     >Shopping Cart</NavLink>
+
 
             // </div>
         )

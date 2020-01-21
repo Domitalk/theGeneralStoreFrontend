@@ -5,18 +5,24 @@ import styled from "styled-components"
 export default class Item extends React.Component {
 
     handleClick = () => {
-        this.props.addItemToCart(this.props.item)
+        if(this.props.addItemToCart) {
+            this.props.addItemToCart(this.props.item)
+        }
     }
 
     render() {
         return (
+
             <div className="col-9 mx-auto col-md-6 col-lg-3 my-3">
-                <div className="card">
+                <div onClick={this.handleClick} className="card">
+                    <h1>{this.props.item.name}</h1>
+                    <h2>{this.props.item.price}</h2>
                     <div className="img-container p-5" onClick={()=> console.log("clicked")}>
-                        <Link to="/details">
+                        {/* <Link to="/details"> */}
                             <img src={this.props.item.picture} className="card-img-top"></img>
-                        </Link>
+                        {/* </Link> */}
                     </div>
+                    {this.props.quantity ? <h2>QTY: {this.props.quantity}</h2> : null}
                 </div>
             </div> 
         )
