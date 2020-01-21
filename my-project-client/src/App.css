@@ -12,6 +12,40 @@ body{
   color: var(--mainDark) !important
 }
 
+.navbar-style{
+background: var(--mainBlue);
+color: var(--mainWhite) !important;
+font-size: 1.3rem; 
+text-transform: capitalize;
+}
+
+.checkout-button{
+text-transform: capitalize;
+font-size: 1.4rem;
+background: transparent;
+border: 0.05rem solid var(--lightBlue);
+color:var(--lightBlue);
+border-radius: 0.5rem;
+padding: 0.2rem 0.5rem;
+cursor:pointer;
+margin:0.2rem 0.5rem 0;
+transition:all 0.5s ease-in-out;
+}
+.checkout-button:hover{
+    background:var(--lightBlue);
+    color:var(--mainBlue);
+}
+.checkout-button:focus {
+    outline: none;}
+
+/* a:hover {
+    background:var(--lightBlue);
+    color:var(--mainBlue);
+} */
+:focus {
+    outline: none;
+}
+
 .text-title{
   font-family: 'Oswald', sans-serif;
   letter-spacing: 0.3rem;
@@ -34,33 +68,29 @@ body{
   height: 40vmin;
   pointer-events: none;
 }
+.itemComponent {
+  display:inline-block;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  margin: auto;
+  text-align: center;
+
+  width: 400px;
+  height: 500px;
+  border-style: solid;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.itemPictureContainer {
+  width: 300px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.itemPictureContainer img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
 }

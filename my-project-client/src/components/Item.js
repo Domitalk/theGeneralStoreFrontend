@@ -1,25 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class Item extends Component {
+export default class Item extends React.Component {
+
+    handleClick = () => {
+        this.props.addItemToCart(this.props.item)
+    }
+
     render() {
         return (
-             <div /*onClick={this.handleClick}*/ className="card">
-                <div className="image">
-                    {/* <img src={this.props.image} ></img> */}
-                </div>
-                <div className="content">
-                    <a className="header">{this.props.name}</a>
-                    <div className="meta">
-                        <span className="date"></span>
-                    </div>
-
-                </div>
-                <div className="extra content">
-                    ${this.props.price}  
+            <div onClick={this.handleClick} className="itemComponent">
+                <h1>{this.props.item.name}</h1>
+                <h2>{this.props.item.price}</h2>
+                <div className="itemPictureContainer">
+                <img className="itemPicture" src={this.props.item.picture} alt=""/>
                 </div>
             </div>
-
-        );
-        
+        )
     }
+    
 }
