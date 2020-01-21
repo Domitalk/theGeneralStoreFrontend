@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 export default class Profile extends React.Component {
     state = {
         carts: []
@@ -12,14 +11,20 @@ export default class Profile extends React.Component {
         }
     }
 
-    componentDidMount() {
-        fetch(`http://localhost:4000/users/${this.props.user.id}`)
-        .then(r => r.json())
-        .then((response) => {
-            this.setState({
-                carts: response
+
+        /// for some reason this was crashing my authlogin
+
+
+    checkme = () => {
+        if (this.props.user > 0) {
+            fetch(`http://localhost:4000/users/${localStorage.user_id}`)
+            .then(r => r.json())
+            .then((response) => {
+                this.setState({
+                    carts: response
+                })
             })
-        })
+        }
     }
 
     showPreviousCarts = () => {
@@ -47,10 +52,8 @@ export default class Profile extends React.Component {
 
         return (
             <div>
-                
-                {this.props.user.name? <h1>{this.props.user.name}</h1> : null}
-                {this.props.user.name? <h3>Member Since: {this.makeCreatedAtPretty(this.props.user.created_at)}</h3> : null}
-                {this.props.user.name? this.showPreviousCarts() : null }
+                {this.props.loggedIn ? <h1>{localStorage.name}</h1> : null}
+                {this.props.loggedIn ? this.showPreviousCarts() : null }
             </div>
         )
     }

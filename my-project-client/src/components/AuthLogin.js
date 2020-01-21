@@ -17,9 +17,49 @@ export default class AuthLogin extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault() 
 
-        fetch('')
+        if (this.state.createNew) {
+            fetch('http://localhost:4000/api/v1/users', {
+                method: "POST", 
+                headers: {
+                    'Content-Type': 'application/json'
+                }, 
+                body: JSON.stringify({
+                    user: {
+                        name: this.state.name, 
+                        password: this.state.password
+                    }
+                })
+            })
+            .then(r => r.json() )
+            .then((response) => {
 
-
+                console.log(response.user)
+                localStorage.token = response.jwt
+                localStorage.user_id = response.user.data.id
+                localStorage.name = response.user.data.attributes.name
+                this.props.postAuthUser(localStorage.user_id)
+            })
+        } else {
+            fetch('http://localhost:4000/api/v1/auth', {
+                method: "POST", 
+                headers: {
+                    'Content-Type': 'application/json'
+                }, 
+                body: JSON.stringify({
+                    user: {
+                        name: this.state.name, 
+                        password: this.state.password
+                    }
+                })
+            }) 
+            .then(r => r.json() )
+            .then((response) => {
+                localStorage.token = response.jwt
+                localStorage.user_id = response.user.data.id 
+                localStorage.name = response.user.data.attributes.name
+                this.props.postAuthUser(localStorage.user_id)
+            })
+        }
 
         // postAuthUser  (when you have user created/get)
     }
@@ -27,7 +67,7 @@ export default class AuthLogin extends React.Component {
     handleChange = (event) => {
         this.setState({ 
             [event.target.name]: event.target.value
-        }, console.log(this.state))
+        })
     }
 
     render() {
