@@ -13,10 +13,14 @@ export default class ItemsContainer extends React.Component {
     render () {
         return (
             
-            <div >
+
+            <div>
+                <h2 className="py-5 col-10 mx-auto text-title3 font-weight-bold text-blue text-center">
+                    Product List
+                </h2>
+            
                 {this.mapAllItems()}
             </div>
-           
         )
     }
 

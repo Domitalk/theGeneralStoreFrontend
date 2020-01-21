@@ -1,4 +1,6 @@
 import React from 'react'
+import {Link} from "react-router-dom"
+import styled from "styled-components"
 
 export default class Item extends React.Component {
 
@@ -8,14 +10,24 @@ export default class Item extends React.Component {
 
     render() {
         return (
-            <div onClick={this.handleClick} className="itemComponent">
-                <h1>{this.props.item.name}</h1>
-                <h2>{this.props.item.price}</h2>
-                <div className="itemPictureContainer">
-                <img className="itemPicture" src={this.props.item.picture} alt=""/>
+            <div className="col-9 mx-auto col-md-6 col-lg-3 my-3">
+                <div className="card">
+                    <div className="img-container p-5" onClick={()=> console.log("clicked")}>
+                        <Link to="/details">
+                            <img src={this.props.item.picture} className="card-img-top"></img>
+                        </Link>
+                    </div>
                 </div>
-            </div>
+            </div> 
         )
     }
     
 }
+
+{/* <div onClick={this.handleClick} className="itemComponent">
+    <h1>{this.props.item.name}</h1>
+    <h2>${this.props.item.price}</h2>
+    <div className="itemPictureContainer">
+        <img className="itemPicture" src={this.props.item.picture} alt="" />
+    </div>
+</div> */}
