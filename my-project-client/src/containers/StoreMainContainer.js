@@ -5,6 +5,7 @@ import Navbar from '../components/NavBar'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import CartContainer from './CartContainer'
 import Profile from '../components/Profile'
+import AuthLogin from '../components/AuthLogin'
 
 
 export default class StoreMainContainer extends React.Component {
@@ -76,6 +77,28 @@ export default class StoreMainContainer extends React.Component {
         })
     }
 
+    postAuthUser = (arg) => {
+        fetch('http://localhost:4000/carts', {
+            method: "POST", 
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            }, 
+            body: JSON.stringify({
+                user: arg 
+            })
+        })
+        .then( r => r.json())
+        .then((response) => {
+            this.setState({
+                currentCart: response.cart,
+                loggedIn: true,
+                currentUser: arg,
+                items: response.items
+            })
+        })
+    }
+
     loginUser = (id) => {
         // console.log(id)
         // console.log(this.state.users)
@@ -90,7 +113,7 @@ export default class StoreMainContainer extends React.Component {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-            user: loggedinuser
+                user: loggedinuser
             })
         })
         .then(r => r.json())
@@ -110,7 +133,8 @@ export default class StoreMainContainer extends React.Component {
         return (
             <Router> 
                 <div>
-                    <Route path="/" render={routerProps => this.state.loggedIn? <Navbar/> : <Login users={this.state.users} loginUser={this.loginUser} /> } />
+                    {/* <Route path="/" render={routerProps => this.state.loggedIn? <Navbar/> : <Login users={this.state.users} loginUser={this.loginUser} /> } /> */}
+                    <Route path="/" render={routerProps => this.state.loggedIn? <Navbar/> : <AuthLogin postAuthUser={this.postAuthUser} /> } />
                     <Route exact path="/browse" render={routerProps => <ItemsContainer {...routerProps} items={this.state.items} addItemToCart={this.addItemToCart} />} />
                     <Route exact path="/cart"  render={routerProps => <CartContainer {...routerProps} itemsCatalog={this.state.items} cartitems={this.state.currentCartItems} />} />
                     <Route exact path="/profile" render={routerProps => <Profile {...routerProps} user={this.state.currentUser} />}/>
