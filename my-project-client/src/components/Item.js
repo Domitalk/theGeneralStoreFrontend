@@ -17,7 +17,7 @@ export default class Item extends React.Component {
                 <div onClick={this.handleClick} className="card">
                     <h1>{this.props.item.name}</h1>
                     <h2>{this.props.item.price}</h2>
-                    <div className="img-container p-5" onClick={()=> console.log("clicked")}>
+                    <div className="img-container p-5" >
                         {/* <Link to="/details"> */}
                             <img src={this.props.item.picture} className="card-img-top"></img>
                         {/* </Link> */}
