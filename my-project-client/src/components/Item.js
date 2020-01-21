@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from "react-router-dom"
 import styled from "styled-components"
+import { Card, Icon, Image } from 'semantic-ui-react'
 
 export default class Item extends React.Component {
 
@@ -10,21 +11,28 @@ export default class Item extends React.Component {
         }
     }
 
+    
+
     render() {
         return (
-
-            <div className="col-9 mx-auto col-md-6 col-lg-3 my-3">
-                <div onClick={this.handleClick} className="card">
-                    <h1>{this.props.item.name}</h1>
-                    <h2>{this.props.item.price}</h2>
-                    <div className="img-container p-5" >
-                        {/* <Link to="/details"> */}
-                            <img src={this.props.item.picture} className="card-img-top"></img>
-                        {/* </Link> */}
-                    </div>
-                    {this.props.quantity ? <h2>QTY: {this.props.quantity}</h2> : null}
-                </div>
-            </div> 
+            <div className="column five wide" >
+            <Card onClick={()=> this.handleClick()}>
+                    <Image src={this.props.item.picture} />
+                <Card.Content>
+                    <Card.Header>{this.props.item.name}</Card.Header>
+                    <Card.Meta>${this.props.item.price}</Card.Meta>
+                    <Card.Description>
+                        {/* Daniel is a comedian living in Nashville. */}
+                    </Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                <a>
+                    <Icon name="cart arrow down" />
+                </a>
+                    {this.props.item.quantity ? <h2>QTY: {this.props.item.quantity}</h2> : null}
+                </Card.Content>
+            </Card> 
+            </div>        
         )
     }
     

@@ -1,5 +1,7 @@
 import React from 'react'
 import Item from '../components/Item'
+import { Card, Icon, Image } from 'semantic-ui-react'
+
 
 export default class ItemsContainer extends React.Component {
 
@@ -10,6 +12,7 @@ export default class ItemsContainer extends React.Component {
         })
     }
     
+    
     render () {
         return (
             
@@ -19,8 +22,13 @@ export default class ItemsContainer extends React.Component {
                 <h2 className="py-5 col-10 mx-auto text-title3 font-weight-bold text-blue text-center">
                     Product List
                 </h2>
-            
-                {this.mapAllItems()}
+                    <div className="ui container"> 
+                    <div className="ui equal height stretched grid"> 
+                           
+                                {this.mapAllItems()}
+                            
+                        </div>
+                    </div>
             </div>
         )
     }
