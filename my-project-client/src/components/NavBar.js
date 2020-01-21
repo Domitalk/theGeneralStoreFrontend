@@ -2,6 +2,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
+import { Card, Icon, Image } from 'semantic-ui-react'
 
 const link = {
     width: '100px',
@@ -41,19 +42,16 @@ export default class Navbar extends React.Component {
                             Products
                         </NavLink>
                     </li>
+                    <li className="ml-5">
+                        <NavLink to="/profile" >
+                           My Profile
+                        </NavLink>
+                    </li>
                     </ul>
-                    <NavLink exact to='/profile' className="ml-auto">
-                     <button className="checkout-button">
-                        <span className="mr-2">
-                            <i className="fas fa-cart-plus" />
-                        </span>
-                        My Profile
-                     </button>  
-                    </NavLink> 
                      <NavLink exact to='/cart' className="ml-auto">
                      <button className="checkout-button">
                         <span className="mr-2">
-                            <i className="fas fa-cart-plus" />
+                            <Icon className="cart arrow down" />
                         </span>
                         My Cart
                      </button>  

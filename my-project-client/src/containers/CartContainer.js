@@ -18,6 +18,10 @@ export default class CartContainer extends React.Component {
         // console.log(this.props.currentCartItems)
         return (
             <div>
+                <h2 className="py-5 col-10 mx-auto text-title3 font-weight-bold text-blue text-center">
+                    Your Cart 
+                </h2>
+
                 {this.mapAllItems()}
             </div>
         )

@@ -23,7 +23,7 @@ export default class ItemsContainer extends React.Component {
                     Product List
                 </h2>
                     <div className="ui container"> 
-                    <div className="ui equal height stretched grid"> 
+                        <div className="ui equal height stretched grid"> 
                            
                                 {this.mapAllItems()}
                             
