@@ -12,9 +12,11 @@ export default class ItemsContainer extends React.Component {
     
     render () {
         return (
-            <div>
+            
+            <div >
                 {this.mapAllItems()}
             </div>
+           
         )
     }
 

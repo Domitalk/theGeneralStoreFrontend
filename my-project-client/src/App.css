@@ -46,11 +46,18 @@ transition:all 0.5s ease-in-out;
     outline: none;
 }
 
-.text-title{
+.text-title1{
   font-family: 'Oswald', sans-serif;
   letter-spacing: 0.3rem;
   text-transform: uppercase;
 }
+
+.text-title2{
+font-family: 'Cabin Sketch', cursive;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+
 
 .text-blue{
   color: var(--mainBlue)
