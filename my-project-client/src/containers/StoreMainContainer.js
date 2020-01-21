@@ -17,15 +17,15 @@ export default class StoreMainContainer extends React.Component {
         items: []
     }
 
-    componentDidMount () {
+    componentDidMount() {
         fetch('http://localhost:4000/login')
-        .then(r => r.json())
-        .then((response) => {
-            // console.log(response)
-            this.setState({
-                users: response
+            .then(r => r.json())
+            .then((response) => {
+                // console.log(response)
+                this.setState({
+                    users: response
+                })
             })
-        })
     }
 
 
@@ -78,7 +78,7 @@ export default class StoreMainContainer extends React.Component {
     loginUser = (id) => {
         // console.log(id)
         // console.log(this.state.users)
-        let loggedinuser = this.state.users.find(function(user) {
+        let loggedinuser = this.state.users.find(function (user) {
             return user.id === parseInt(id)
         })
         // console.log("after find", loggedinuser)
@@ -89,7 +89,7 @@ export default class StoreMainContainer extends React.Component {
                 'Accept': 'application/json'
             },
             body: JSON.stringify({
-                user: loggedinuser
+            user: loggedinuser
             })
         })
         .then(r => r.json())
@@ -102,6 +102,7 @@ export default class StoreMainContainer extends React.Component {
                 items: response.items
             })
         })
+            
     }
 
     render() {

@@ -1,3 +1,85 @@
+:root{
+  --mainBlue: #2a2a72;
+  --lightBlue: #009ffd;
+  --mainWhite: #f3f3f3;
+  --mainDark: #232528;
+  --mainYellow: #ffa488;
+}
+
+body{
+  font-family: 'Oswald', sans-serif !important;
+  background: var(--mainWhite) !important;
+  color: var(--mainDark) !important
+}
+
+.navbar-style{
+background: var(--mainBlue);
+color: var(--mainWhite) !important;
+font-size: 1.3rem; 
+text-transform: capitalize;
+}
+
+.checkout-button{
+text-transform: capitalize;
+font-size: 1.4rem;
+background: transparent;
+border: 0.05rem solid var(--lightBlue);
+color:var(--lightBlue);
+border-radius: 0.5rem;
+padding: 0.2rem 0.5rem;
+cursor:pointer;
+margin:0.2rem 0.5rem 0;
+transition:all 0.5s ease-in-out;
+}
+.checkout-button:hover{
+    background:var(--lightBlue);
+    color:var(--mainBlue);
+}
+.checkout-button:focus {
+    outline: none;}
+
+/* a:hover {
+    background:var(--lightBlue);
+    color:var(--mainBlue);
+} */
+:focus {
+    outline: none;
+}
+
+.text-title1{
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+
+.text-title2{
+font-family: 'Cabin Sketch', cursive;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+.text-title3{
+  font-family: 'Permanent Marker', cursive;
+  letter-spacing: 0.3rem;
+  text-transform: uppercase;
+}
+
+
+.text-blue{
+  color: var(--mainBlue)
+}
+
+.text-bright{
+  color: var(--lightBlue)
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
 .itemComponent {
   display:inline-block;
 
