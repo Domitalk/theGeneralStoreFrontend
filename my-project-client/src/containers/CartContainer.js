@@ -7,7 +7,7 @@ export default class CartContainer extends React.Component {
         // console.log(this.props)
         return this.props.cartitems.map((cartitem) => {
             // return <Item item={item} />
-            console.log(this.props)
+            // console.log(this.props)
             let itemToRender = this.props.itemsCatalog.find(function(element) {
                 return element.id === cartitem.Item_id })
             return <Item item={itemToRender} quantity={cartitem.quantity} />
