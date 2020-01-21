@@ -42,6 +42,14 @@ export default class Navbar extends React.Component {
                         </NavLink>
                     </li>
                     </ul>
+                    <NavLink exact to='/profile' className="ml-auto">
+                     <button className="checkout-button">
+                        <span className="mr-2">
+                            <i className="fas fa-cart-plus" />
+                        </span>
+                        My Profile
+                     </button>  
+                    </NavLink> 
                      <NavLink exact to='/cart' className="ml-auto">
                      <button className="checkout-button">
                         <span className="mr-2">

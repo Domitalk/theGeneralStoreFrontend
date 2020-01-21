@@ -4,6 +4,7 @@ import ItemsContainer from './ItemsContainer'
 import Navbar from '../components/NavBar'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import CartContainer from './CartContainer'
+import Profile from '../components/Profile'
 
 
 export default class StoreMainContainer extends React.Component {
@@ -109,9 +110,10 @@ export default class StoreMainContainer extends React.Component {
         return (
             <Router> 
                 <div>
-                    {this.state.loggedIn? <Navbar/> : <Login users={this.state.users} loginUser={this.loginUser} /> }
+                    <Route path="/" render={routerProps => this.state.loggedIn? <Navbar/> : <Login users={this.state.users} loginUser={this.loginUser} /> } />
                     <Route exact path="/browse" render={routerProps => <ItemsContainer {...routerProps} items={this.state.items} addItemToCart={this.addItemToCart} />} />
                     <Route exact path="/cart"  render={routerProps => <CartContainer {...routerProps} itemsCatalog={this.state.items} cartitems={this.state.currentCartItems} />} />
+                    <Route exact path="/profile" render={routerProps => <Profile {...routerProps} user={this.state.currentUser} />}/>
                     {/* {this.state.loggedIn? <ItemsContainer items={this.state.items} /> : <Login users={this.state.users} loginUser={this.loginUser} />} */}
                 </div>
             </Router>
