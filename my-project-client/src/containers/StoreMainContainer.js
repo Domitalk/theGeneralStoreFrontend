@@ -110,7 +110,7 @@ export default class StoreMainContainer extends React.Component {
                 <div>
                     {this.state.loggedIn? <Navbar/> : <Login users={this.state.users} loginUser={this.loginUser} /> }
                     <Route exact path="/browse" render={routerProps => <ItemsContainer {...routerProps} items={this.state.items} addItemToCart={this.addItemToCart} />} />
-                    <Route exact path="/cart" render={routerProps => <CartContainer {...routerProps} currentCartItems={this.state.currentCartItems} />} />
+                    <Route exact path="/cart"  render={routerProps => <CartContainer {...routerProps} itemsCatalog={this.state.items} cartitems={this.state.currentCartItems} />} />
                     {/* {this.state.loggedIn? <ItemsContainer items={this.state.items} /> : <Login users={this.state.users} loginUser={this.loginUser} />} */}
                 </div>
             </Router>

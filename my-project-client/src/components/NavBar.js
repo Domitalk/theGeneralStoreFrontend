@@ -14,7 +14,7 @@ export default class Navbar extends React.Component {
     
     render () {
         return (
-            <div> 
+            <div className="Navbar"> 
                 <NavLink 
                     to="/browse"
                     exact 

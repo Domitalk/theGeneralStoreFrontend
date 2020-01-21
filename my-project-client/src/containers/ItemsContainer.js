@@ -13,6 +13,7 @@ export default class ItemsContainer extends React.Component {
     render () {
         return (
             <div>
+                <br></br>
                 {this.mapAllItems()}
             </div>
         )

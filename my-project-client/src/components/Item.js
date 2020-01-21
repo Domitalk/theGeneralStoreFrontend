@@ -3,7 +3,9 @@ import React from 'react'
 export default class Item extends React.Component {
 
     handleClick = () => {
-        this.props.addItemToCart(this.props.item)
+        if(this.props.addItemToCart) {
+            this.props.addItemToCart(this.props.item)
+        }
     }
 
     render() {
@@ -13,6 +15,7 @@ export default class Item extends React.Component {
                 <h2>{this.props.item.price}</h2>
                 <div className="itemPictureContainer">
                 <img className="itemPicture" src={this.props.item.picture} alt=""/>
+                {this.props.quantity ? <h2>QTY: {this.props.quantity}</h2> : null}
                 </div>
             </div>
         )
