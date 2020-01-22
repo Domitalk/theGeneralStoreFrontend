@@ -8,33 +8,40 @@ export default class CartItem extends Component {
     }
     
     handleIncrement = () => {
-        let newQuant = this.state.quantity + 1
-        let newTotal = this.state.price * newQuant
+        if (this.state.quantity !=0 )
+        {
+            let newQuant = this.state.quantity + 1
+            let newTotal = this.state.price * newQuant
 
-        this.setState({ 
-            quantity: newQuant,
-            total: newTotal 
-        })
+            this.setState({ 
+                quantity: newQuant,
+                total: newTotal 
+            })
+        }
     }
 
     handleDecrement = () => {
-        let newQuant = this.state.quantity - 1
-        let newTotal = this.state.price * newQuant
+        if (this.state.quantity != 0) 
+        {
+            let newQuant = this.state.quantity - 1
+            let newTotal = this.state.price * newQuant
 
-        this.setState({
-            quantity: newQuant,
-            total: newTotal
-        })
+            this.setState({
+                quantity: newQuant,
+                total: newTotal
+            })
+        }
     }
 
     render() {
         
         return (
             <div className="row my-1 text-capitalize text-center">
-                <div className="col-10 mx-auto col-lg-2">
+                <div className="col-10 mx-auto col-lg-2 absolute">
                     <img
                         src={this.props.item.picture}
-                        style={{ width: "5rem", heigth: "5rem" }}
+                        style={{
+                            width: "5rem", heigth: "5rem",right: "50px" }}
                         className="img-fluid"
                         alt=""
                     />

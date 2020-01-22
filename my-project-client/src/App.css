@@ -12,6 +12,17 @@ body{
   color: var(--mainDark) !important;
   
 }
+.absolute {
+  position: absolute;
+  left: 80px;
+}
+
+.checkout {
+ position: absolute;
+ right: 10px;
+ down: 20px
+}
+
 img {
   display: block;
   width: 100%;

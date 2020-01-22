@@ -1,6 +1,7 @@
 import React from 'react'
 import CartItem from '../components/CartItem'
 import CartColumn from '../components/CartColumns'
+import CartTotal from '../components/CartTotal'
 export default class CartContainer extends React.Component {
 
     state = {
@@ -36,8 +37,11 @@ export default class CartContainer extends React.Component {
                 <h2 className="py-5 col-10 mx-auto text-title3 font-weight-bold text-blue text-center">
                     {this.props.loggedIn ? "Your Cart" : null }
                 </h2>
-                <CartColumn/>
-                {this.mapAllItems()}
+                    <CartColumn/>
+                    {this.mapAllItems()}
+                <div>   
+                    <CartTotal/>
+                </div>
             </div>
         )
     }
