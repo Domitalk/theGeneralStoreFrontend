@@ -33,7 +33,8 @@ export default class AuthLogin extends React.Component {
             .then(r => r.json() )
             .then((response) => {
 
-                console.log(response.user)
+                console.log("user"+ response.user)
+                console.log("user id"+ response.user.data.id)
                 localStorage.token = response.jwt
                 localStorage.user_id = response.user.data.id
                 localStorage.name = response.user.data.attributes.name
