@@ -6,7 +6,8 @@ export default class AuthLogin extends React.Component {
         user: {},
         name: "",
         password: "", 
-        createNew: false 
+        createNew: false, 
+        picture: ""
     }
     swapCreate = () => {
         this.setState({
@@ -26,19 +27,24 @@ export default class AuthLogin extends React.Component {
                 body: JSON.stringify({
                     user: {
                         name: this.state.name, 
-                        password: this.state.password
+                        password: this.state.password,
+                        picture: this.state.picture
                     }
                 })
             })
             .then(r => r.json() )
             .then((response) => {
 
-                console.log("user"+ response.user)
-                console.log("user id"+ response.user.data.id)
-                localStorage.token = response.jwt
-                localStorage.user_id = response.user.data.id
-                localStorage.name = response.user.data.attributes.name
-                this.props.postAuthUser(localStorage.user_id)
+                // console.log(response.user)
+                if (response.jwt) {
+                    localStorage.token = response.jwt
+                    localStorage.user_id = response.user.data.id
+                    localStorage.name = response.user.data.attributes.name
+                    localStorage.picture = response.user.data.attributes.picture
+                    this.props.postAuthUser(localStorage.user_id)
+                } else {
+                    alert("Oops, something went wrong")
+                }
             })
         } else {
             fetch('http://localhost:4000/api/v1/auth', {
@@ -55,10 +61,16 @@ export default class AuthLogin extends React.Component {
             }) 
             .then(r => r.json() )
             .then((response) => {
-                localStorage.token = response.jwt
-                localStorage.user_id = response.user.data.id 
-                localStorage.name = response.user.data.attributes.name
-                this.props.postAuthUser(localStorage.user_id)
+                // console.log(response)
+                if (response.jwt) {
+                    localStorage.token = response.jwt
+                    localStorage.user_id = response.user.data.id 
+                    localStorage.name = response.user.data.attributes.name
+                    localStorage.picture = response.user.data.attributes.picture
+                    this.props.postAuthUser(localStorage.user_id)
+                } else {
+                    alert("Invalid Password or Username")
+                }
             })
         }
 
@@ -69,6 +81,17 @@ export default class AuthLogin extends React.Component {
         this.setState({ 
             [event.target.name]: event.target.value
         })
+    }
+
+    addPicture = () => { 
+        if (this.state.createNew) {
+            return (                  
+            <label>
+                Profile Picture: 
+                <input type="text" name="picture" value={this.state.picture} onChange={this.handleChange} />
+            </label>
+            )
+        } 
     }
 
     render() {
@@ -85,6 +108,9 @@ export default class AuthLogin extends React.Component {
                         Password:
                         <input type="password" name="password" value={this.state.password} onChange={this.handleChange} /> 
                     </label>
+                    <br></br>
+
+                    {this.addPicture()}
                     <br></br>
                     <input type="submit" value="Submit" /> 
                 </form>
