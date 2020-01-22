@@ -41,6 +41,7 @@ export default class StoreMainContainer extends React.Component {
         }
     }
 
+    
 
     addItemToCart = (itemToAdd) => {
         fetch('http://localhost:4000/cart_items', {
