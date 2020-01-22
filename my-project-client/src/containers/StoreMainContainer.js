@@ -53,7 +53,6 @@ export default class StoreMainContainer extends React.Component {
             
             let tempfalse = false 
 
-
             let newArr = [...this.state.currentCartItems]
 
             newArr.forEach((cartitem) => {
@@ -74,8 +73,6 @@ export default class StoreMainContainer extends React.Component {
                 newArr = [...newArr, response]
             }
 
-
-            
             this.setState({
                 currentCartItems: newArr
             })
@@ -157,8 +154,8 @@ export default class StoreMainContainer extends React.Component {
                 <div>
                     {/* <Route path="/" render={routerProps => this.state.loggedIn? <Navbar/> : <Login users={this.state.users} loginUser={this.loginUser} /> } /> */}
                     <Route path="/" render={routerProps => this.state.loggedIn? <Navbar/> : <AuthLogin postAuthUser={this.postAuthUser} /> } />
-                    <Route exact path="/browse" render={routerProps => <ItemsContainer {...routerProps} items={this.state.items} addItemToCart={this.addItemToCart} />} />
-                    <Route exact path="/cart"  render={routerProps => <CartContainer {...routerProps} itemsCatalog={this.state.items} cartitems={this.state.currentCartItems} />} />
+                    <Route exact path="/browse" render={routerProps => <ItemsContainer {...routerProps} items={this.state.items} addItemToCart={this.addItemToCart} loggedIn={this.state.loggedIn} />} />
+                    <Route exact path="/cart"  render={routerProps => <CartContainer {...routerProps} itemsCatalog={this.state.items} loggedIn={this.state.loggedIn} cartitems={this.state.currentCartItems} />} />
                     <Route exact path="/profile" render={routerProps => <Profile {...routerProps} user={this.state.currentUser} loggedIn={this.state.loggedIn} />}/>
 
                     {/* {this.state.loggedIn? <ItemsContainer items={this.state.items} /> : <Login users={this.state.users} loginUser={this.loginUser} />} */}

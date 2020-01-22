@@ -19,7 +19,7 @@ export default class CartContainer extends React.Component {
         return (
             <div>
                 <h2 className="py-5 col-10 mx-auto text-title3 font-weight-bold text-blue text-center">
-                    Your Cart 
+                    {this.props.loggedIn ? "Your Cart" : null }
                 </h2>
 
                 {this.mapAllItems()}
