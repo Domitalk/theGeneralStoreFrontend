@@ -9,6 +9,7 @@ export default class AuthLogin extends React.Component {
         createNew: false, 
         picture: ""
     }
+    
     swapCreate = () => {
         this.setState({
             createNew: !this.state.createNew
