@@ -14,7 +14,7 @@ export default class StoreMainContainer extends React.Component {
         users: [],
         loggedIn: false,
         currentUser: 0,
-        currentCartItems: [],
+        currentCartItems: [], 
         currentCart: {}, 
         items: [], 
         previousCarts: []
@@ -33,6 +33,13 @@ export default class StoreMainContainer extends React.Component {
     //             })
     //         })
     // }
+    componentDidMount() {
+        if (window.performance) {
+            if (performance.navigation.type == 1) {
+                window.location = "http://localhost:3000"
+            }
+        }
+    }
 
 
     addItemToCart = (itemToAdd) => {
