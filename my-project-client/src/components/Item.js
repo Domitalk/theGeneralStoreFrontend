@@ -1,17 +1,25 @@
 import React from 'react'
 import {Link} from "react-router-dom"
 import styled from "styled-components"
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Button, Header, Card, Icon, Image, Modal } from 'semantic-ui-react'
 import { NavLink } from 'react-router-dom'
-
 
 export default class Item extends React.Component {
     
     state = {
-        purchased: false
+        purchased: false,
+        open: false 
     }
+    
+
+    show = (dimmer) => () => this.setState({ dimmer, open: true })
+    close = () => this.setState({ open: false })
 
     handleClick = () => {
+        this.setState({
+            purchased: true
+        })
+
         if(this.props.addItemToCart) {
             this.props.addItemToCart(this.props.item)
         }
@@ -19,15 +27,18 @@ export default class Item extends React.Component {
 
     
 
+    
+
     render() {
+        const { open, dimmer } = this.state;
         let purchased = this.state.purchased; 
         
         return (
 
-            <div className="column five wide" onClick={()=>console.log("clicked on this div")}>
+            <div className="column five wide" onClick={console.log("ewfgf")}>
                 <Card>
                 <NavLink to="/details" >
-                    <Image src={this.props.item.picture} />
+                        <Image className = "img-container" src={this.props.item.picture} />
                 </NavLink>
                 <Card.Content>
                     <Card.Header>{this.props.item.name}</Card.Header>
@@ -38,7 +49,7 @@ export default class Item extends React.Component {
                 </Card.Content>
                 <Card.Content extra>   
                                     
-                                        
+                                <row> 
                                     {purchased ? 
                                         (<button>
                                             <p className="text-capitalize mb-0" disabled={true}>
@@ -48,20 +59,52 @@ export default class Item extends React.Component {
                                         </button> 
                                         ) 
                                             : 
-                                        (<button onClick={() => this.handleClick()} className="checkout-button">
+                                (<button className="checkout-button" onClick={this.show('blurring')} >
                                             <span className="mr-2">
                                                 <i className="fas fa-cart-plus" />      
                                             </span> 
                                         </button>
                                         )
                                     }
-                               
-                                    
-                                
-                          
+                                    <div style={{ display: "flex" }}>
+                                            {/* <button className="checkout-button-yellow" style={{ marginLeft: "auto" }}>
+                                            Details Page
+                                        </button> */}
+                                    </div>
+                                </row> 
                     {this.props.item.quantity ? <h2>QTY: {this.props.item.quantity}</h2> : null}
                 </Card.Content>
             </Card> 
+            
+            <div > </div>
+                <Modal  size = 'tiny' dimmer={dimmer} open={open} onClose={this.close}>
+                    <Modal.Header>Item Added To Cart!</Modal.Header>
+                    <Modal.Content image>
+                        <Image
+                            wrapped
+                            size='medium'
+                            src={this.props.item.picture}
+                        />
+                        <Modal.Description>
+                            <Header>{this.props.item.name}</Header>
+                            <p>${this.props.item.price}</p>
+                            
+                        </Modal.Description>
+                    </Modal.Content>
+                    <Modal.Actions>
+                        <button className="checkout-button" onClick={() => { this.handleClick(); this.close();}}>
+                            Continue Shopping
+                        </button>
+                        {/* <button onClick={() => { this.handleClick() }} className="checkout-button-yellow">
+                        <NavLink to="/cart" >
+                            Go To Cart
+                        </NavLink>
+                        </button> */}
+                            
+                             {/* onClick={this.close} */}
+                       
+                    </Modal.Actions>
+                </Modal>
             </div>        
         )
     }

@@ -3,7 +3,7 @@
   --lightBlue: #009ffd;
   --mainWhite: #f3f3f3;
   --mainDark: #232528;
-  --mainYellow: #ffa488;
+  --mainYellow:#ffa400;
 }
 
 body{
@@ -50,6 +50,25 @@ transition:all 0.5s ease-in-out;
 .checkout-button:focus {
     outline: none;}
 
+.checkout-button-yellow{
+text-transform: capitalize;
+font-size: 1.4rem;
+background: transparent;
+border: 0.05rem solid yellow;
+color:var(--mainYellow);
+border-radius: 0.5rem;
+padding: 0.2rem 0.5rem;
+cursor:pointer;
+margin:0.2rem 0.5rem 0;
+transition:all 0.5s ease-in-out;
+}
+.checkout-button-yellow:hover{
+    background:var(--mainYellow);
+    color:yellow;
+}
+.checkout-button-yellow:focus {
+    outline: none;}
+
 /* a:hover {
     background:var(--lightBlue);
     color:var(--mainBlue);
@@ -74,6 +93,26 @@ font-family: 'Cabin Sketch', cursive;
   letter-spacing: 0.3rem;
   text-transform: uppercase;
 }
+
+.card{
+  transition: all 1s linear
+}
+.card:hover{
+  border:0.04rem solid rgba(0,0,0,0.2);
+  box-shadow:2px 2px 5px 0px rgba(0,0,0,0.2)
+}
+
+.img-container{
+  position:relative;
+  overflow:hidden;
+}
+
+.img-container:hover{
+  transition: all .5s linear;
+  transform: scale(.9);
+}
+
+
 
 
 .text-blue{
