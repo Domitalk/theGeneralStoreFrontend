@@ -6,11 +6,10 @@ export default class Profile extends React.Component {
         loadeverything: false
     }
     makeCreatedAtPretty = (created_at) => {
-        console.log(created_at)
-        if (this.props.user.created_at) {
-            let copyString = created_at
-            return copyString.substring(0, 10)
-        }
+        // console.log(created_at)
+        let copyString = created_at
+        return copyString.substring(0, 10)
+        
     }
 
 
@@ -76,7 +75,7 @@ export default class Profile extends React.Component {
             })
             .then(r => r.json())
             .then((response) => {
-                
+
                 this.setState({
                     carts: response, 
                     loadeverything: true
@@ -87,7 +86,7 @@ export default class Profile extends React.Component {
 
     mapAllCarts = () => {
         return (this.state.carts.map((cart) => {
-            console.log(cart)
+            // console.log(cart)
             return <li>Shopped on: {this.makeCreatedAtPretty(cart.created_at)}</li>
             })
         )
