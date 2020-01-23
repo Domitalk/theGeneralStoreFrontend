@@ -3,7 +3,8 @@ import React from 'react'
 export default class Profile extends React.Component {
     state = {
         carts: [], 
-        loadeverything: false
+        loadeverything: false, 
+        picture: ""
     }
     makeCreatedAtPretty = (created_at) => {
         // console.log(created_at)
@@ -91,13 +92,54 @@ export default class Profile extends React.Component {
             })
         )
     }
+    
+    handleSubmit = (event) => {
+        event.preventDefault() 
+        
+        fetch(`http://localhost:4000/items/${localStorage.user_id}`, {
+            method: "PATCH", 
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.token
+            }, 
+            body: JSON.stringify({
+                picture: this.state.picture
+            })
+        })
+        .then(r => r.json() )
+        .then((response) => {
+
+            // console.log(response)
+            if (response.picture) {
+                localStorage.picture = response.picture
+                this.setState({
+                    picture: ""
+                })
+            } else {
+                alert("Oops, something went wrong")
+            }
+        })
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
 
     loadstuff = () => {
         return (
             <div>
                 <h1>{localStorage.name}</h1>
-                <img src={localStorage.picture} />
-
+                <div className="profileDiv">
+                    <img className="profileImg" src={localStorage.picture} />
+                </div>
+                <h3>Want to upload a profile pic?</h3>
+                <form onSubmit={this.handleSubmit}>
+                    <label for="picture">Picture</label>
+                    <input type="text" name="picture" placeholder="URL HERE" value={this.state.picture} onChange={this.handleChange} />
+                    <input type="submit" name="submit"/>
+                </form>
                 <ul>
                     {this.mapAllCarts()}
                 </ul>

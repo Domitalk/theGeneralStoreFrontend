@@ -36,12 +36,16 @@ export default class StoreMainContainer extends React.Component {
     componentDidMount() {
         if (window.performance) {
             if (performance.navigation.type == 1) {
+                localStorage.removeItem("user_id")
+                localStorage.removeItem("name")
+                localStorage.removeItem("token")
+                localStorage.removeItem("picture")
                 window.location = "http://localhost:3000"
             }
         }
     }
 
-    
+
 
     addItemToCart = (itemToAdd) => {
         fetch('http://localhost:4000/cart_items', {
