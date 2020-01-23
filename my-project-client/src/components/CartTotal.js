@@ -12,6 +12,7 @@ export default class CartTotal extends Component {
     close = () => this.setState({ open: false })
     
     onClick = ()=>{
+        // console.log("testing")
         this.props.checkout()
         this.setState({ open: true })
         //console.log(this.show)
@@ -65,8 +66,8 @@ export default class CartTotal extends Component {
                     {/* <button onClick={() => { this.handleClick() }} className="checkout-button-yellow">
                         <NavLink to="/cart" >
                             Go To Cart
-                        </NavLink>
-                        </button> */}
+                        </NavLink> */}
+                        {/* </button> */}
 
                     {/* onClick={this.close} */}
 

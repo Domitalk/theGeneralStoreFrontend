@@ -135,46 +135,47 @@ export default class StoreMainContainer extends React.Component {
 
     checkout = () => {
 
-    let cart = this.state.currentCart
-    let user = this.state.currentUser
+    // let cart = this.state.currentCart
+    // let user = this.state.currentUser
 
-        let oldCart = {
-            id: user.id,
-            cart_open: false
-        }
+        // let oldCart = {
+        //     id: user.id,
+        //     cart_open: false
+        // }
 
-        fetch(`http://localhost:4000/carts/${cart.id}`, {
-            method: "PATCH",
+        // fetch(`http://localhost:4000/carts/${cart.id}`, {
+        //     method: "PATCH",
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'Accept': 'application/json',
+        //         "Authorization": localStorage.token
+        //     },
+        //     body: JSON.stringify(oldCart)
+        // })
+        // .then(r=>r.json())
+        // .then((response) => {
+
+        // })
+        //     .then
+        (fetch('http://localhost:4000/carts', {
+            method: "POST",
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
                 "Authorization": localStorage.token
             },
-            body: JSON.stringify(oldCart)
-        })
-        .then(r=>r.json())
-        .then((response) => {
-
-        })
-            .then(fetch('http://localhost:4000/carts', {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    "Authorization": localStorage.token
-                },
-                body: JSON.stringify({
-                    id: user.id
-
-                })
+            body: JSON.stringify({
+                id: this.state.currentUser
             })
-                .then(r => r.json())
-                .then((response) => {
-                    //console.log(response)
-                    this.setState({
-                        currentCart: response.cart
-                    })
-                }))
+        })
+        .then(r => r.json())
+        .then((response) => {
+            console.log(response)
+            this.setState({
+                currentCartItems: [], 
+                currentCart: response.cart
+            })
+        }))
     }
 
     // loginUser = (id) => {
