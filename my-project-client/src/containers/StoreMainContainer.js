@@ -21,8 +21,9 @@ export default class StoreMainContainer extends React.Component {
     }
 
     reverseOrder = () => {
-        let reverseArray =[ this.state.items ]
+        let reverseArray = this.state.items 
         reverseArray.reverse()
+        
 
         this.setState({ 
             items: reverseArray

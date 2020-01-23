@@ -53,11 +53,7 @@ export default class Navbar extends React.Component {
                            My Profile
                         </NavLink>
                     </li>
-                    <li>
-                        <button onClick={()=>{this.props.reverseOrder()}}>
-                            reverse
-                        </button>
-                    </li>
+                    
                     </ul>
                      <NavLink exact to='/cart' className="ml-auto">
                      <button className="checkout-button">

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Header, Card, Icon, Image, Modal } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom'
 
 export default class CartTotal extends Component {
     
@@ -45,13 +46,13 @@ export default class CartTotal extends Component {
                 </div>
             </div>
             
-            <Modal size='tiny' dimmer={dimmer} open={open} onClose={this.close}>
+                <Modal size='tiny' dimmer={dimmer} open={open} onClose={this.close} closeIcon>
                 <Modal.Header>Congrats on your Purchase!</Modal.Header>
                 <Modal.Content image>
                     <Image
                         wrapped
                         size='medium'
-                        src={''} alt="generic image"
+                            src={'https://image.shutterstock.com/image-vector/congratulations-typography-lettering-handwritten-vector-260nw-1049534216.jpg'} alt="generic image"
                     />
                     <Modal.Description>
                         <Header>Order Total</Header>
@@ -60,9 +61,11 @@ export default class CartTotal extends Component {
                     </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
+                <NavLink to="/browse" >
                     <button className="checkout-button" onClick={() => {this.close() }}>
-                        Continue Shopping
+                        Back to Product List
                         </button>
+                </NavLink>
                     {/* <button onClick={() => { this.handleClick() }} className="checkout-button-yellow">
                         <NavLink to="/cart" >
                             Go To Cart
