@@ -20,14 +20,7 @@ export default class StoreMainContainer extends React.Component {
         previousCarts: []
     }
 
-    reverseOrder = () => {
-        let reverseArray =[ this.state.items ]
-        reverseArray.reverse()
-
-        this.setState({ 
-            items: reverseArray
-        })
-    }
+    
 
         // also crashing 
 
