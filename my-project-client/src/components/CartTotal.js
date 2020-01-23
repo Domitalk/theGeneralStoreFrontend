@@ -38,7 +38,7 @@ export default class CartTotal extends Component {
                             <span className="text-title"> total :</span>{" "}
                             <strong>{((this.props.total) * .085) + this.props.total }</strong>
                         </h5>
-                            <button onClick={this.show('blurring')} className="checkout-button">
+                            <button onClick={()=>{this.onClick()}} className="checkout-button">
                             Checkout
                         </button>    
                     </div>
