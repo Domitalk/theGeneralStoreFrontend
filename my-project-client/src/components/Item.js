@@ -76,7 +76,7 @@ export default class Item extends React.Component {
                 </Card.Content>
             </Card> 
             
-            <div > </div>
+            
                 <Modal  size = 'tiny' dimmer={dimmer} open={open} onClose={this.close}>
                     <Modal.Header>Item Added To Cart!</Modal.Header>
                     <Modal.Content image>

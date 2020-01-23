@@ -5,7 +5,7 @@ export default class CartItem extends Component {
             price: this.props.item.price,
             quantity: this.props.quantity,
             total: this.props.item.price
-    }
+        }
 
    
     

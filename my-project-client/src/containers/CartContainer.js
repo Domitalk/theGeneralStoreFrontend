@@ -61,6 +61,17 @@ export default class CartContainer extends React.Component {
             cartTotal: sum
         })
 
+        return this.state.cartitems.map((cartitem, idx) => {
+            // return <Item item={item} />
+            // console.log(this.props)
+
+
+            let itemToRender = this.props.itemsCatalog.find(function (element) {
+                return element.id === cartitem.Item_id
+            })
+            return <CartItem handleTotal={this.handleTotal} item={itemToRender} quantity={1} handleCartItemRmv={() => { this.handleCartItemRmv(idx) }} />
+        })
+
 
     }
 
@@ -100,7 +111,7 @@ export default class CartContainer extends React.Component {
                     {this.state.cartitems.length === 0 ? 
                     <h2 className="py-5 col-10 mx-auto text-title3 font-weight-bold text-yellow text-center"> There's nothing in your cart!!!</h2>
                     :      
-                    <CartTotal total={this.state.cartTotal}/>
+                    <CartTotal checkout = {this.props.checkout} total={this.state.cartTotal}/>
                     }
                 </div>
             </div>
