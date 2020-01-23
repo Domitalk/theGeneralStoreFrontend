@@ -107,7 +107,7 @@ export default class StoreMainContainer extends React.Component {
         })
         .then( r => r.json())
         .then((response) => {
-            //console.log(response)
+            console.log(response)
             this.setState({
                 currentCart: response.cart,
                 loggedIn: true,
@@ -134,48 +134,53 @@ export default class StoreMainContainer extends React.Component {
     }
 
     checkout = () => {
+        console.log('chekout fetch trigger')
 
-    // let cart = this.state.currentCart
-    // let user = this.state.currentUser
+    let cart = this.state.currentCart
+    let user = this.state.currentUser
 
-        // let oldCart = {
-        //     id: user.id,
-        //     cart_open: false
-        // }
+        let oldCart = {
+            id: user.id,
+            cart_open: false
+        }
 
-        // fetch(`http://localhost:4000/carts/${cart.id}`, {
-        //     method: "PATCH",
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Accept': 'application/json',
-        //         "Authorization": localStorage.token
-        //     },
-        //     body: JSON.stringify(oldCart)
-        // })
-        // .then(r=>r.json())
-        // .then((response) => {
-
-        // })
-        //     .then
-        (fetch('http://localhost:4000/carts', {
-            method: "POST",
+        fetch(`http://localhost:4000/carts/${cart.id}`, {
+            method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
                 "Authorization": localStorage.token
             },
-            body: JSON.stringify({
-                id: this.state.currentUser
-            })
+            body: JSON.stringify(oldCart)
         })
         .then(r => r.json())
         .then((response) => {
-            console.log(response)
             this.setState({
                 currentCartItems: [], 
                 currentCart: response.cart
-            })
-        }))
+            }, () => { console.log(this.state)})
+        })
+
+        //     .then
+        // (fetch('http://localhost:4000/carts', {
+        //     method: "POST",
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'Accept': 'application/json',
+        //         "Authorization": localStorage.token
+        //     },
+        //     body: JSON.stringify({
+        //         id: this.state.currentUser
+        //     })
+        // })
+        // .then(r => r.json())
+        // .then((response) => {
+        //     // console.log(response)
+        //     this.setState({
+        //         currentCartItems: [], 
+        //         currentCart: response.cart
+        //     }, () => { console.log(this.state)})
+        // }))
     }
 
     // loginUser = (id) => {

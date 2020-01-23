@@ -129,6 +129,8 @@ export default class AuthLogin extends React.Component {
 
 
             <div>
+                <h3 className="text-title2">Welcome To The Generic Store</h3>
+
                 <form class="form-2" onSubmit={this.handleSubmit}>
                     <h1><span class="log-in">Log in</span> or <span class="sign-up">sign up</span></h1>
                     <p class="float">
