@@ -98,10 +98,12 @@ export default class StoreMainContainer extends React.Component {
             }, 
             body: JSON.stringify({
                 id: arg 
+
             })
         })
         .then( r => r.json())
         .then((response) => {
+            //console.log(response)
             this.setState({
                 currentCart: response.cart,
                 loggedIn: true,
@@ -161,7 +163,7 @@ export default class StoreMainContainer extends React.Component {
             <Router> 
                 <div>
                     {/* <Route path="/" render={routerProps => this.state.loggedIn? <Navbar/> : <Login users={this.state.users} loginUser={this.loginUser} /> } /> */}
-                    <Route path="/" render={routerProps => this.state.loggedIn? <Navbar/> : <AuthLogin postAuthUser={this.postAuthUser} /> } />
+                    <Route path="/" render={routerProps => this.state.loggedIn? <Navbar/> : <AuthLogin postAuthUser={this.postAuthUser} /> } />    
                     <Route exact path="/browse" render={routerProps => <ItemsContainer {...routerProps} items={this.state.items} addItemToCart={this.addItemToCart} loggedIn={this.state.loggedIn} />} />
                     <Route exact path="/cart"  render={routerProps => <CartContainer {...routerProps} itemsCatalog={this.state.items} loggedIn={this.state.loggedIn} cartitems={this.state.currentCartItems} />} />
                     <Route exact path="/profile" render={routerProps => <Profile {...routerProps} user={this.state.currentUser} loggedIn={this.state.loggedIn} />}/>

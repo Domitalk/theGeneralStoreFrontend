@@ -6,31 +6,41 @@ export default class CartItem extends Component {
             quantity: this.props.quantity,
             total: this.props.item.price
     }
+
+   
     
     handleIncrement = () => {
-        if (this.state.quantity !=0 )
-        {
-            let newQuant = this.state.quantity + 1
-            let newTotal = this.state.price * newQuant
+        
+        let newQuant = this.state.quantity + 1
+        let newTotal = this.state.price * newQuant
 
             this.setState({ 
                 quantity: newQuant,
                 total: newTotal 
             })
-        }
+            
+            this.props.handleTotal(this.state.price)
+        
+
     }
 
-    handleDecrement = () => {
-        if (this.state.quantity != 0) 
-        {
-            let newQuant = this.state.quantity - 1
-            let newTotal = this.state.price * newQuant
 
+
+    handleDecrement = () => {
+
+        let newQuant = this.state.quantity - 1
+        let newTotal = this.state.price * newQuant
+
+        if (this.state.quantity != 0) 
+        {       
             this.setState({
                 quantity: newQuant,
                 total: newTotal
             })
+
+            this.props.handleTotal((this.state.price * -1))
         }
+        
     }
 
     render() {

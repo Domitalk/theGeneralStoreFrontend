@@ -4,15 +4,71 @@ import CartColumn from '../components/CartColumns'
 import CartTotal from '../components/CartTotal'
 export default class CartContainer extends React.Component {
 
-    state = {
-        cartitems: this.props.cartitems
+    
+
+    constructor(props){
+        super(props)
+
+        this.state = {
+            cartitems: this.props.cartitems,
+            cartTotal: 0
+        }
+        
+        let total = []
+
+        this.state.cartitems.map((cartitem, idx) => {
+            let item= this.props.itemsCatalog.filter(function (element) {
+                return element.id === cartitem.Item_id
+            })
+            total.push(item)
+        })
+
+        let currentTotal = total.map((item, idx) => { return item[0].price })
+
+        var sum = 0;
+        for (var i = 0; i < currentTotal.length; i++) {
+
+            sum += currentTotal[i]
+        }
+        
+        this.state = {...this.state, cartTotal: sum}
+        
     }
 
+   
+
     handleCartItemRmv = (idx)=> {
+        let total = []
+
         this.state.cartitems.splice(idx, 1)
-        this.setState({
-            cartitems: [...this.state.cartitems]
+        this.state.cartitems.map((cartitem, idx) => {
+            let item = this.props.itemsCatalog.filter(function (element) {
+                return element.id === cartitem.Item_id
+            })
+            total.push(item)
         })
+
+        let currentTotal = total.map((item, idx) => { return item[0].price })
+
+        var sum = 0;
+        for (var i = 0; i < currentTotal.length; i++) {
+
+            sum += currentTotal[i]
+        }
+
+        this.setState({
+            cartitems: [...this.state.cartitems],
+            cartTotal: sum
+        })
+
+
+    }
+
+    handleTotal = (priceChange) => {
+        console.log("ewefbgfc")
+
+        this.setState({ cartTotal: this.state.cartTotal +  priceChange})
+
     }
 
     mapAllItems = () => {
@@ -24,10 +80,11 @@ export default class CartContainer extends React.Component {
 
             let itemToRender = this.props.itemsCatalog.find(function(element) {
                 return element.id === cartitem.Item_id })
-            return <CartItem item={itemToRender} quantity={1} handleCartItemRmv={() => { this.handleCartItemRmv(idx)}}/>
+            return <CartItem handleTotal={this.handleTotal} item={itemToRender} quantity={1} handleCartItemRmv={() => { this.handleCartItemRmv(idx)}}/>
         })
     }
 
+    
 
 
     render () {
@@ -40,7 +97,11 @@ export default class CartContainer extends React.Component {
                     <CartColumn/>
                     {this.mapAllItems()}
                 <div>   
-                    <CartTotal/>
+                    {this.state.cartitems.length === 0 ? 
+                    <h2 className="py-5 col-10 mx-auto text-title3 font-weight-bold text-yellow text-center"> There's nothing in your cart!!!</h2>
+                    :      
+                    <CartTotal total={this.state.cartTotal}/>
+                    }
                 </div>
             </div>
         )

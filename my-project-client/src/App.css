@@ -14,13 +14,12 @@ body{
 }
 .absolute {
   position: absolute;
-  left: 80px;
+  left: 60px;
 }
 
 .checkout {
- position: absolute;
- right: 10px;
- down: 20px
+position: absolute; 
+margin-left: 0px;
 }
 
 img {

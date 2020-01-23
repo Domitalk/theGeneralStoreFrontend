@@ -35,7 +35,7 @@ export default class Item extends React.Component {
         
         return (
 
-            <div className="column five wide" onClick={console.log("ewfgf")}>
+            <div className="column five wide" /*where and onClick needs to go*/>
                 <Card>
                 <NavLink to="/details" >
                         <Image className = "img-container" src={this.props.item.picture} />
