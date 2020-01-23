@@ -28,21 +28,7 @@ export default class Navbar extends React.Component {
                 <nav className="navbar navbar-expand-sm navbar-style navbar-dark px-sm-5">   
                 <h3 className="text-title2">The Generic Store</h3>
                     <ul className="navbar-nav align-items-center">
-                    <li className="ml-5">
-                        <NavLink exact to="/" >
-                            About Us
-                        </NavLink>
-                    </li>
-                    <li className="ml-5">
-                        <NavLink exact to="/" >
-                            Testimonials
-                        </NavLink>
-                    </li>
-                    <li className="ml-5">
-                        <NavLink exact to="/" >
-                            Charity Involvement
-                        </NavLink>
-                    </li>
+
                     <li className="ml-5">
                         <NavLink to="/browse" >
                             Products
