@@ -15,6 +15,12 @@ const link = {
 
 export default class Navbar extends React.Component {
     
+    // reverseOrder = ()=> 
+    // {
+    //     let itemArray = this.props.itemArray
+    //     itemArray.reverse()
+    //     console.log(itemArray)
+    // }
     render () {
         return (
 
@@ -46,6 +52,11 @@ export default class Navbar extends React.Component {
                         <NavLink to="/profile" >
                            My Profile
                         </NavLink>
+                    </li>
+                    <li>
+                        <button onClick={()=>{this.props.reverseOrder()}}>
+                            reverse
+                        </button>
                     </li>
                     </ul>
                      <NavLink exact to='/cart' className="ml-auto">

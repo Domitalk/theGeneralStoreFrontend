@@ -20,6 +20,14 @@ export default class StoreMainContainer extends React.Component {
         previousCarts: []
     }
 
+    reverseOrder = () => {
+        let reverseArray =[ this.state.items ]
+        reverseArray.reverse()
+
+        this.setState({ 
+            items: reverseArray
+        })
+    }
 
         // also crashing 
 
@@ -153,28 +161,34 @@ export default class StoreMainContainer extends React.Component {
             body: JSON.stringify(oldCart)
         })
         .then(r=>r.json())
-        .then((response) => {
+        .then((response) => { 
+            console.log("before set state"+response)
+        
+            this.setState({   
+                currentCartItems: [],
+                currentCart: response.cart
+            }, () => { console.log(this.state) } ) 
 
         })
-            .then(fetch('http://localhost:4000/carts', {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    "Authorization": localStorage.token
-                },
-                body: JSON.stringify({
-                    id: user.id
+            // .then(fetch('http://localhost:4000/carts', {
+            //     method: "POST",
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         'Accept': 'application/json',
+            //         "Authorization": localStorage.token
+            //     },
+            //     body: JSON.stringify({
+            //         id: user.id
 
-                })
-            })
-                .then(r => r.json())
-                .then((response) => {
-                    //console.log(response)
-                    this.setState({
-                        currentCart: response.cart
-                    })
-                }))
+            //     })
+            // })
+            //     .then(r => r.json())
+            //     .then((response) => {
+            //         //console.log(response)
+            //         this.setState({
+            //             currentCart: response.cart
+            //         })
+            //     }))
     }
 
     // loginUser = (id) => {
@@ -211,7 +225,7 @@ export default class StoreMainContainer extends React.Component {
             <Router> 
                 <div>
                     {/* <Route path="/" render={routerProps => this.state.loggedIn? <Navbar/> : <Login users={this.state.users} loginUser={this.loginUser} /> } /> */}
-                    <Route path="/" render={routerProps => this.state.loggedIn? <Navbar/> : <AuthLogin postAuthUser={this.postAuthUser} /> } />    
+                    <Route path="/" render={routerProps => this.state.loggedIn ? <Navbar reverseOrder={this.reverseOrder}/> : <AuthLogin postAuthUser={this.postAuthUser} /> } />    
                     <Route exact path="/browse" render={routerProps => <ItemsContainer {...routerProps} items={this.state.items} addItemToCart={this.addItemToCart} loggedIn={this.state.loggedIn} />} />
                     <Route exact path="/cart"  render={routerProps => <CartContainer {...routerProps} itemsCatalog={this.state.items} loggedIn={this.state.loggedIn} cartitems={this.state.currentCartItems} checkout={this.checkout}/>} />
                     <Route exact path="/profile" render={routerProps => <Profile {...routerProps} user={this.state.currentUser} loggedIn={this.state.loggedIn} />}/>
