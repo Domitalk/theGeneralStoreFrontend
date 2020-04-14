@@ -126,27 +126,32 @@ export default class AuthLogin extends React.Component {
 
     render() {
         return (
+            <div> 
+                <br />
+                <center><h3 className="text-title2">Welcome To The Generic Store</h3></center>
 
+            <div style= {{position: "relative", paddingBottom: "calc(56.25% + 44px)"}}>
+                <iframe src='https://gfycat.com/ifr/AdolescentWatchfulAfricanpiedkingfisher' frameborder='0' scrolling='no' width='100%' height='100%' style= {{ position: "absolute", top: "0", left: "0"}} allowFullScreen></iframe>
+                    <form class="form-2 authcontainer" onSubmit={this.handleSubmit}>
+                        <h1><span class="log-in">Log in</span> or <span class="sign-up">sign up</span></h1>
+                        <p class="float">
+                            <label for="login"><i class="icon-user"></i>Username</label>
+                            <input type="text" name="name" placeholder="Username or email" value={this.state.name} onChange={this.handleChange} />
+                        </p>
+                        <p class="float">
+                            <label for="password"><i class="icon-lock"></i>Password</label>
+                            <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handleChange} />
+                        </p>
 
-            <div>
-                <h3 className="text-title2">Welcome To The Generic Store</h3>
-
-                <form class="form-2" onSubmit={this.handleSubmit}>
-                    <h1><span class="log-in">Log in</span> or <span class="sign-up">sign up</span></h1>
-                    <p class="float">
-                        <label for="login"><i class="icon-user"></i>Username</label>
-                        <input type="text" name="name" placeholder="Username or email" value={this.state.name} onChange={this.handleChange} />
-                    </p>
-                    <p class="float">
-                        <label for="password"><i class="icon-lock"></i>Password</label>
-                        <input type="password" name="password" placeholder="Password"  value={this.state.password} onChange={this.handleChange} /> 
-                    </p>
-                    
-                    <p class="clearfix"> 
-                        <a onClick={this.makeNewUser} name="signup" href="#" class="log-twitter">Sign Up</a>    
-                        <input type="submit" name="submit"  />
-                    </p>       
-                </form>
+                        <p class="clearfix">
+                            <a onClick={this.makeNewUser} name="signup" href="#" class="log-twitter">Sign Up</a>
+                            <input type="submit" name="submit" />
+                        </p>
+                    </form>
+            </div>
+            
+              
+                
             </div>
         )
     }

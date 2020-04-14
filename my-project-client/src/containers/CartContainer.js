@@ -2,6 +2,7 @@ import React from 'react'
 import CartItem from '../components/CartItem'
 import CartColumn from '../components/CartColumns'
 import CartTotal from '../components/CartTotal'
+
 export default class CartContainer extends React.Component {
 
     

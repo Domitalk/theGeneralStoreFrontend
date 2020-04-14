@@ -212,7 +212,7 @@ font-family: 'Cabin Sketch', cursive;
 }
 
 .form-2 .float {
-  width: 50%;
+  width: 100%;
   float: left;
   padding-top: 15px;
   border-top: 1px solid rgba(255,255,255,1);
@@ -325,6 +325,16 @@ font-family: 'Cabin Sketch', cursive;
 .form-2 input[type=submit]:active,
 .form-2 .log-twitter:active{
     top: 1px;
+}
+
+.authcontainer {
+  position: absolute;
+  top: 10%;
+  right: 37%;
+  margin: 20px;
+  max-width: 300px;
+  padding: 16px;
+  background-color: white;
 }
 
 .no-boxshadow .form-2 input[type=submit]:hover {

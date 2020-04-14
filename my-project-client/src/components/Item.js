@@ -8,7 +8,7 @@ export default class Item extends React.Component {
     
     state = {
         purchased: false,
-        open: false 
+        open: true 
     }
     
 
