@@ -236,7 +236,7 @@ export default class StoreMainContainer extends React.Component {
                     <Route exact path="/browse" render={routerProps => <ItemsContainer {...routerProps} items={this.state.items} addItemToCart={this.addItemToCart} loggedIn={this.state.loggedIn} />} />
                     <Route exact path="/cart"  render={routerProps => <CartContainer {...routerProps} itemsCatalog={this.state.items} loggedIn={this.state.loggedIn} cartitems={this.state.currentCartItems} checkout={this.checkout}/>} />
                     <Route exact path="/profile" render={routerProps => <Profile {...routerProps} user={this.state.currentUser} loggedIn={this.state.loggedIn} />}/>
-
+                    <Route exact path="/log in" render={routerProps => <AuthLogin {...routerProps} /> } />
                     {/* {this.state.loggedIn? <ItemsContainer items={this.state.items} /> : <Login users={this.state.users} loginUser={this.loginUser} />} */}
                 </div>
             </Router>

@@ -132,7 +132,7 @@ export default class AuthLogin extends React.Component {
 
             <div style= {{position: "relative", paddingBottom: "calc(56.25% + 44px)"}}>
                 <iframe src='https://gfycat.com/ifr/AdolescentWatchfulAfricanpiedkingfisher' frameborder='0' scrolling='no' width='100%' height='100%' style= {{ position: "absolute", top: "0", left: "0"}} allowFullScreen></iframe>
-                    <form class="form-2 authcontainer" onSubmit={this.handleSubmit}>
+                    <form class="form-2 authcontainer" value="Log in" onSubmit={this.handleSubmit}>
                         <h1><span class="log-in">Log in</span> or <span class="sign-up">sign up</span></h1>
                         <p class="float">
                             <label for="login"><i class="icon-user"></i>Username</label>
