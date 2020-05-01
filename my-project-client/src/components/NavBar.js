@@ -53,11 +53,11 @@ export default class Navbar extends React.Component {
                            My Profile
                         </NavLink>
                     </li>
-                    {/* <li className="ml-5">
+                    <li className="ml-5">
                         <NavLink to="/log in" >
                             Log Out
                         </NavLink>
-                    </li> */}
+                    </li>
                     
                     </ul>
                      <NavLink exact to='/cart' className="ml-auto">
