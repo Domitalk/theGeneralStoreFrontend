@@ -1,17 +1,16 @@
 
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import styled from 'styled-components'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
 
-const link = {
-    width: '100px',
-    padding: '12px',
-    margin: '0 6px 6px',
-    background: 'blue',
-    textDecoration: 'none',
-    color: 'white',
-  }
+// const link = {
+//     width: '100px',
+//     padding: '12px',
+//     margin: '0 6px 6px',
+//     background: 'blue',
+//     textDecoration: 'none',
+//     color: 'white',
+//   }
 
 export default class Navbar extends React.Component {
     
